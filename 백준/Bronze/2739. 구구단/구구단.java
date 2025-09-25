@@ -4,13 +4,15 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int n = sc.nextInt();
+        int N = sc.nextInt();
 
-        for(int i=n; i<=9; i++){
-            for(int j=1; j<10; j++){
-                System.out.println(n + " * " + j + " = " + i*j);
-            }
-            break;
+        // 입력 검증 코드
+        if (N < 1 || N > 9) return;
+
+        // 문제 풀이 로직
+        for (int i = 1; i <= 9; i++) {
+            int result = N * i;
+            System.out.println(N + " * " + i + " = " + result);
         }
     }
 }
