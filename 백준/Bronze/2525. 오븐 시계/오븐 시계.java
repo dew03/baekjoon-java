@@ -1,24 +1,32 @@
 import java.util.Scanner;
-// 훈제오리구이를 시작하는 시각과 오븐구이를 하는 데 필요한 시간이 분단위로 주어졌을 때,
-// 오븐구이가 끝나는 시각을 계산하는 프로그램을 작성하시오
-// 14 30    17 40     23 48     입력 예시
-// 20       80        25
 
-// 14 50    19 0      0 13      출력 예시
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int a = sc.nextInt();
-        int b = sc.nextInt();
-        int time = sc.nextInt();
-        b+=time; // b: 120
+        int H = sc.nextInt();
+        int M = sc.nextInt();
+        int T = sc.nextInt();
 
-        int m = b/60; // b를 60으로 나눴을때의 몫 2
-        a+=m;
+        // 입력 검증 코드
+        if (H < 0 || H > 23) {              // H이 0보다 작거나 23보다 클 경우
+            return;
+        } else if (M < 0 || M > 59) {       // M이 0보다 작거나 59보다 클 경우
+            return;
+        }
 
-        int v = b%60; // 나머지
-        a = a % 24;
-        System.out.printf("%d %d", a,v);
+        // 문제 풀이 로직
+        int result = M + T;
+        if (result >= 60) {                 // result의 값이 60 이상일 때
+            int temp = result / 60;         // 시간에 더해줄 값
+            result = result % 60;           // 분은 0~59로 다시 맞춤
+            H = H + temp;
+            if (H >= 24) {                  // 24시를 넘어가면 0시부터 다시 시작
+                H = H % 24;
+            }
+            System.out.print(H + " " + result);
+        } else {                            // result의 값이 60 미만일 때
+            System.out.print(H + " " + result);
+        }
     }
 }
