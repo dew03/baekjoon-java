@@ -5,11 +5,13 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int n = sc.nextInt();
-        int result = 0;
+        if (n < 1 || n > 10000) return;         // 입력 검증 코드
+        int sum = 0;
 
-        for(int i=1; i<=n; i++){
-            result += i;
+        // 문제 풀이 로직
+        for (int i = 0; i < n; i++) {
+            sum = sum + (i + 1);
         }
-        System.out.println(result);
+        System.out.print(sum);
     }
 }
