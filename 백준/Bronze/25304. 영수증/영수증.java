@@ -4,21 +4,25 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int price = sc.nextInt();   // 총 금액
-        int n = sc.nextInt();       // 물건의 종류 개수
-        int mul = 0;
-        int sum = 0;
+        int X = sc.nextInt();   // 총 금액
+        int N = sc.nextInt();   // 물건 종류
+        int sum = 0;            // 곱한 값을 더해 저장할 변수
 
-        for(int i=0; i<n; i++) {    // 종류 개수만큼 반복
-            int a = sc.nextInt();   // 각 물건의 가격
-            int b = sc.nextInt();   // 각 물건의 개수
-            mul = a*b;
-            sum += mul;
+        // 입력 검증 코드
+        if (X < 1 || X > 1000000000) return;
+        if (N < 1 || N > 100) return;
+
+        // 문제 풀이 로직
+        for (int i = 0; i < N; i++) {
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            sum = (a * b) + sum;
         }
-        if(sum == price){
-            System.out.println("Yes");
-        }else{
-            System.out.println("No");
+        if (X == sum) {
+            System.out.print("Yes");
+        } else {
+            System.out.print("No");
         }
+        sc.close();
     }
 }
