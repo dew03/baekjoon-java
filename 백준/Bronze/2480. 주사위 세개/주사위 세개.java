@@ -4,32 +4,49 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int dice1 = sc.nextInt();
-        int dice2 = sc.nextInt();
-        int dice3 = sc.nextInt();
-        int result = 0;
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
 
-        if(dice1 == dice2 && dice2 == dice3){
-            System.out.println(10000 + dice1 * 1000);
-        }else if(dice1 == dice2 || dice2 == dice3 || dice1 == dice3){
-            if(dice1 == dice2){
-                result = dice1;
-            }else if(dice2 == dice3){
-                result = dice2;
-            }else{
-                result = dice3;
+        // 입력 검증 코드
+        if (a < 1 || a > 7) return;
+        if (b < 1 || b > 7) return;
+        if (c < 1 || c > 7) return;
+
+        // 문제 풀이 로직
+        int result = 0;
+        int max = 0;
+        if (a == b && b == c) {                     // 3개의 눈이 모두 같을 경우
+            result = 10000 + (a * 1000);
+            System.out.print(result);
+        } else if (a == b || b == c || a == c) {    // 2개의 눈이 같을 경우
+            if (a == b) {                           // a와 b가 같을 경우
+                max = a;
+                result = 1000 + (max * 100);
+                System.out.print(result);
+            } else if (b == c) {                    // b와 c가 같을 경우
+                max = b;
+                result = 1000 + (max * 100);
+                System.out.print(result);
+            } else {                                // a와 c가 같을 경우
+                max = a;
+                result = 1000 + (max * 100);
+                System.out.print(result);
             }
-            System.out.println(1000 + result * 100);
-        }else{
-            // 세 개 모두 다를 때: 가장 큰 값 찾기
-            result = dice1;
-            if(dice2 > result){
-                result = dice2;
+        } else {
+            if (a < b && b > c) {                   // b가 가장 클 경우
+                max = b;
+                result = b * 100;
+                System.out.print(result);
+            } else if (b < c && a < c) {            // c가 제일 클 경우
+                max = c;
+                result = c * 100;
+                System.out.print(result);
+            } else {                                // a가 제일 클 경우
+                max = a;
+                result = a * 100;
+                System.out.print(result);
             }
-            if(dice3 > result){
-                result = dice3;
-            }
-            System.out.println(result * 100);
         }
     }
 }
