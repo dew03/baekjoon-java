@@ -11,7 +11,8 @@ public class Main {
         for (int i = 0; i < t; i++) {
             int a = sc.nextInt();
             int b = sc.nextInt();
-            if (a < 0 || b > 10) return;    // 입력 검증 코드
+            // 입력 검증 코드
+            if (a <= 0 || a >= 10 || b <= 0 || b >= 10) return;
             result[i] = a + b;
         }
 
@@ -21,3 +22,4 @@ public class Main {
         }
     }
 }
+
